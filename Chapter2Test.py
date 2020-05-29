@@ -33,6 +33,5 @@ for number in myList3:
         print(number," : Fizz")
 #####
 string2 = "create a list of the first letters of evey word in this string"
-myList4 = string2.split()
-myList5 = [ia for data5 in myList4 for ia in enumerate(data5)]
+myList5 = [data5[0] for data5 in string2.split() ]
 print(myList5)

@@ -33,9 +33,17 @@ def dog_check(dog_string):
     return 'dog' in dog_string.lower()
 result = dog_check("my dogger is missing")
 print(result)
-##PIG LATIN
-string1 = "mad"
-if string1.lower() in "aeiou":
-    print(string1+"ay")
-else:
-    print(string1+string1[0]+"ay")
+
+
+##PIG LATIN "data encocding method"
+
+def pig_latin(word):
+    first_letter = word[0]
+    if first_letter in 'aeiou':
+        pig_word = word+'ay'
+    else:
+        pig_word = word[1:]+first_letter+'ay'
+    return pig_word
+
+result = pig_latin('ronak')
+print(result)

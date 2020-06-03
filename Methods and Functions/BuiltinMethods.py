@@ -45,5 +45,38 @@ def pig_latin(word):
         pig_word = word[1:]+first_letter+'ay'
     return pig_word
 
+def word_order(word):
+    listData = [iteam for iteam in word]
+    listData.sort()
+    return listData
+
 result = pig_latin('ronak')
+x=word_order(result)
+print(x)
+
+#Prime Number
+def prime_number(number):
+    if number>1:
+        for i in range(2,number):
+            if number%2 ==0:
+                return (" not prime number")
+            elif i == (number%2+1) :
+                return ("Prime number")
+result=prime_number(2)
 print(result)
+
+#Sum of n numbers suing *args
+def sum_of_numbers(*argu):
+    return sum(argu)*0.05
+re1=sum_of_numbers(5000)
+# print(re1)
+
+#finding fruit or vegi using **kwargs (keyword arguments)
+def fruit_find(**kwargs):
+    if 'fruit' in kwargs:
+        print("my fruit choice is {}".format(kwargs['fruit']))
+    elif 'vegi'in kwargs:
+        print("my vegi choice is {}".format(kwargs['vegi']))
+    else:
+        print("I don't find any fruit or vegi's")
+fruit_find(fruits = 'apple',vegis = 'cabage', other = 'choco')

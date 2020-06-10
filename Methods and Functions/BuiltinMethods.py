@@ -80,3 +80,12 @@ def fruit_find(**kwargs):
     else:
         print("I don't find any fruit or vegi's")
 fruit_find(fruits = 'apple',vegis = 'cabage', other = 'choco')
+
+# Using both *args and **kwargs
+def my_function(*args,**kwargs):
+    for data in args:
+        if data == 1:
+            print(kwargs['fruit'])
+        else:
+            print(kwargs['vegges'])
+my_function(2, fruit='apple', vegges='carrot')

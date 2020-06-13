@@ -12,23 +12,17 @@ print(value)
 
 #Write a function takes a two word string and return True if both words begine with same letter
 def animal_cracker(word):
-    list1=word.split()
-    temp=list1[0]
-    temp1=list1[1]
-    return temp[0]==temp1[0]
+    list1=word.lower().split()
+    return list1[0][0]==list1[1][0]
 
-value = animal_cracker("world car")
+value = animal_cracker("world war")
 print(value)
 
 #OLD_MACDONALD: Write a function that capitalizes the first and fourth letters of a name
 def old_macdonald(word):
-        listword = [x for x in word]
-        listword[0]= listword[0].upper()
-        listword[3]=listword[3].upper()
-        str = ""
-        for ele in listword:
-            str = str+ele
-        return str
+       first_half = word[:3]
+       second_half = word[3:]
+       return first_half.capitalize()+second_half.capitalize()
 
 value=old_macdonald('oldmacdonald')
 print(value)
@@ -37,39 +31,38 @@ print(value)
 def master_yoda(word):
     list1=word.split( )
     list2 = list1[::-1]
-    str =" "
-    return (str.join(list2))
+    return ' '.join(list2)
+
 value = master_yoda("I am home")
 print(value)
 
 #ALMOST THERE: Given an integer n, return True if n is within 10 of either 100 or 200¶
 def almost_there(number):
-    if (number-100)<=10:
-        return True
-    else:
-        return False
+   return (abs(100-number)<=10) or (abs(200-number)<=10)
 
-value=almost_there(11)
+value=almost_there(150)
 print(value)
 
 #Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
-def has_33(listData):
-    for index,value1 in enumerate(listData):
-        if value1 == 3:
-            next_index = index+1
-            if listData[next_index] == 3:
-                return True
-            else:
-                return False
-value = has_33([1,3,1,3])
+def has_33(nums):
+    for i in range(0, len(nums) - 1):
+
+        # nicer looking alternative in commented code
+        # if nums[i] == 3 and nums[i+1] == 3:
+
+        if nums[i:i + 2] == [3, 3]:
+            return True
+
+    return False
+
+value = has_33([1,3,3,0])
 print("array contains 3 next to a 3 : ",value)
 
 #PAPER DOLL: Given a string, return a string where for every character in the original there are three ch
 def paper_doll(word):
     string1=''
     for iteam in word:
-        for iter1 in range(3):
-            string1 +=iteam
+        string1+=iteam*3
     print(string1)
 paper_doll('Mississippi')
 
@@ -77,12 +70,11 @@ paper_doll('Mississippi')
 # return their sum. If their sum exceeds 21 and there's an eleven,
 # reduce the total sum by 10. Finally, if the sum (even after adjustment) exceeds 21, return 'BUST'
 def black_jack(a,b,c):
-    sum1 = a+b+c
+    sum1 = sum([a,b,c])
     if sum1 <= 21:
         return sum1
-    elif 11 in (a,b,c):
-        sum2 = sum1 - 10
-        return sum2
+    elif 11 in [a,b,c] and sum1-10 <=21:
+        return sum1-10
     else:
         return 'BUST'
 value = black_jack(9,9,11)
@@ -93,10 +85,50 @@ print("black_jack",value)
 # (every 6 will be followed by at least one 9). Return 0 for no numbers.
 
 def summer_of_69(array1):
-    for r in array1:
-        summ =0
-    return summ
+    total = 0
+    add = True
+    for num in array1:
+        while add:
+            if num!=6:
+                total += num
+                break
+            else:
+                add = False
+        while not add:
+            if num !=9:
+                break
+            else:
+                add = True
+                break
+    return total
 
-array1 = [1,2,3,4,5,6]
-value=summer_of_69(array1)
-print(value)
+
+array1 = [1,2,3,4,5,6,7,9,5]
+value = summer_of_69(array1)
+print("sum of 69 ", value)
+# print(value)
+
+# SPY GAME: Write a function that takes in a list of integers and returns True if it contains 007 in order
+#  spy_game([1,2,4,0,0,7,5]) --> True
+#  spy_game([1,0,2,4,0,5,7]) --> True
+#  spy_game([1,7,2,0,4,5,0]) --> False
+def spy_game(numbers):
+   code = [0,0,1,'x']
+
+   for num in numbers:
+       if num == code[0]:
+           code.pop(0)
+   return len(code)==1
+
+value=spy_game([1,2,3,4,0,0,9,8])
+print("007",value)
+# #
+# MAKES TWENTY: Given two integers, return True if the sum of the integers is 20 or if one of the integers is 20. If not, return False
+# makes_twenty(20,10) --> True
+# makes_twenty(12,8) --> True
+# makes_twenty(2,3) --> False
+
+def makes_twenty(a,b):
+   return (a+b)==20 or a==20 or b==20
+value1=makes_twenty(15,10)
+print(value1)

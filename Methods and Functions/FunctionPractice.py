@@ -132,3 +132,49 @@ def makes_twenty(a,b):
    return (a+b)==20 or a==20 or b==20
 value1=makes_twenty(15,10)
 print(value1)
+
+#
+# COUNT PRIMES: Write a function that returns the number of prime numbers that exist up to and including a given number
+# count_primes(100) --> 25
+# By convention, 0 and 1 are not prime.
+def count_prime(num):
+    #check for 0 or 1 input
+    if num<2:
+        return 0
+    ##################
+    #2 or grater
+    ###############
+    #to store prime nummbes
+    primises = [2]
+    #Counter going upto given numbers
+    x = 3
+    while x<=num:
+        for y in range(3,x,2):
+            if x%y == 0:
+                x+=2
+                break
+        else:
+            primises.append(x)
+            x +=2
+    print(primises)
+    return len(primises)
+value = count_prime(6)
+print(value)
+
+
+# Just for fun, not a real problem :)
+# PRINT BIG: Write a function that takes in a single letter, and returns a 5x5 representation of that letter
+# print_big('a')
+#
+# out:   *
+#       * *
+#      *****
+#      *   *
+#      *   *
+# HINT: Consider making a dictionary of possible patterns, and mapping the alphabet to specific 5-line combinations of patterns.
+# For purposes of this exercise, it's ok if your dictionary stops at "E".
+def print_big(letter):
+    dest = {'1':"*",'2':"**",'3':"***"}
+    print(dict['1']['3'])
+
+print_big("a")

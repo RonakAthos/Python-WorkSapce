@@ -29,3 +29,15 @@ print(list1)
 list1 = list(filter(lambda num: num%2 != 0,numbers))
 print(list1)
 
+print(list(map(lambda num:num**2,numbers)))
+
+#Varible SCOPES LEGB Rule
+name_scope = 'Global varible' #Global variable
+def var_scpoes():
+    name_scope = 'Enclosing function local'     # Enclosed local variable
+    def var_enclosed():
+        name_scope = 'local varible' #Local varible
+        print(name_scope)
+    var_enclosed()
+
+var_scpoes()

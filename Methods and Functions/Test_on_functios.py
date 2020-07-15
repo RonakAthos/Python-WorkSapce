@@ -86,6 +86,7 @@ def ispangram(str1, alphabet = string.ascii_lowercase):
     str1 = str1.replace(' ','')
     str1 = str1.lower()
     str1 = set(str1)
+    print(sorted(alphabet),'\n',sorted(str1))
     return str1 == alphabet
 v4 = ispangram("The quick brown fox jumps over the lazy dog")
 print(v4)
